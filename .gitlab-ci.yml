@@ -4,9 +4,9 @@ stages:
 
 dockerbuild:
   script: 
-    - docker build -t rjgallac/smallnginxsample:master .
+    - docker build -t rjgallac/smallnginxsample:latest .
     - docker login  -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-    - docker push rjgallac/smallnginxsample:master
+    - docker push rjgallac/smallnginxsample:latest
   stage: dockerbuild
   tags: 
     - shared-docker-builder
