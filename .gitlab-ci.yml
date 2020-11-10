@@ -1,0 +1,19 @@
+stages:
+  - dockerbuild
+  - deploy
+
+dockerbuild:
+  script: 
+    - docker build -t rjgallac/smallnginxsample:master .
+    - docker login  -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    - docker push rjgallac/smallnginxsample:master
+  stage: dockerbuild
+  tags: 
+    - shared-docker-builder
+
+deploy:
+  script: 
+    - kubectl apply -f nginxkube.yml -n master
+  stage: deploy
+  tags:
+    - kube-runner
