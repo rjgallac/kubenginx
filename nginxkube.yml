@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: rjgallac/smallnginxsample:9
+        image: rjgallac/smallnginxsample:master
         imagePullPolicy: Always
         ports:
         - containerPort: 80
